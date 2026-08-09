@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive RGB Rectangles</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      display: block;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Canvas -->
+  <canvas id="myCanvas"></canvas>
+
+  <script>
+    // Step 1: Canvas Setup
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Helper: Generate Random RGB Color String
+    function getRandomRGB() {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+
+    // Step 2: Create Array of 40 Random Rectangles
+    var boxes = [];
+    var totalBoxes = 40;
+
+    for (var i = 0; i < totalBoxes; i++) {
+      var size = Math.floor(Math.random() * 40) + 40; // Size between 40px and 80px
+      
+      boxes.push({
+        x: Math.random() * (canvas.width - size),
+        y: Math.random() * (canvas.height - size),
+        width: size,
+        height: size,
+        color: getRandomRGB()
+      });
+    }
+
+    // Step 3: Draw Function
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (var i = 0; i < boxes.length; i++) {
+        var b = boxes[i];
+
+        // Draw Filled Rectangle
+        ctx.fillStyle = b.color;
+        ctx.fillRect(b.x, b.y, b.width, b.height);
+
+        // White Border
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(b.x, b.y, b.width, b.height);
+      }
+    }
+
+    // Initial Render
+    draw();
+
+    // Step 4: Click Event Listener
+    canvas.addEventListener("click", function(event) {
+      var mouseX = event.clientX;
+      var mouseY = event.clientY;
+
+      // Check collision for each box
+      for (var i = 0; i < boxes.length; i++) {
+        var b = boxes[i];
+
+        // Rectangle Hit Detection Logic
+        var isInside = mouseX >= b.x && 
+                       mouseX <= b.x + b.width && 
+                       mouseY >= b.y && 
+                       mouseY <= b.y + b.height;
+
+        if (isInside) {
+          // Change color of ONLY the clicked rectangle
+          b.color = getRandomRGB();
+          draw();
+          break; // Stop checking other boxes
+        }
+      }
+    });
+
+    // Handle Window Resize
+    window.addEventListener("resize", function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      draw();
+    });
+  </script>
+
+</body>
+</html>

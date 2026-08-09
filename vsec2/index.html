@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Records</title>
+</head>
+<body>
+
+  <h2>Add Student Marks</h2>
+
+  <!-- Inputs -->
+  Roll No: <input type="number" id="roll"><br><br>
+  Name: <input type="text" id="name"><br><br>
+  Math: <input type="number" id="m1"><br><br>
+  Science: <input type="number" id="m2"><br><br>
+  English: <input type="number" id="m3"><br><br>
+
+  <button onclick="addStudent()">Add Record</button>
+
+  <br><br><hr>
+
+  <!-- Table to display all students -->
+  <h2>All Students List</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Math</th>
+        <th>Science</th>
+        <th>English</th>
+        <th>Total</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody id="studentTable">
+      <!-- Rows will go here -->
+    </tbody>
+  </table>
+
+  <br><hr>
+
+  <!-- Section to display topper -->
+  <h2>Class Topper</h2>
+  <div id="topperSection">No records added yet.</div>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
