@@ -1,0 +1,91 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  padding: 30px;
+  color: #333;
+}
+
+#root {
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #26735b;
+  margin-bottom: 25px;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #ddd;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+form input {
+  flex: 1;
+  min-width: 130px;
+}
+
+button {
+  background-color: #26735b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d5947;
+}
+
+h2 {
+  background-color: #dff2e8;
+  color: #26735b;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+h3 {
+  margin-top: 25px;
+  color: #444;
+}
+
+.expense {
+  background-color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 7px;
+  border: 1px solid #e2e8e5;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form input,
+  form button {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
